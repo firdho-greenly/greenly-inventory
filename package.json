@@ -1,0 +1,25 @@
+{
+  "name": "greenly-so-check",
+  "version": "0.1.0",
+  "private": true,
+  "description": "CLI: cek selisih stok SO (Stock Opname) bulanan — bandingkan bulan current vs bulan sebelumnya dan flag anomali plus-minus.",
+  "type": "module",
+  "scripts": {
+    "prisma:generate": "prisma generate",
+    "prisma:migrate": "prisma migrate dev --create-only",
+    "prisma:apply": "prisma migrate deploy",
+    "cek-so": "tsx src/index.ts"
+  },
+  "dependencies": {
+    "@prisma/client": "^5.19.0",
+    "commander": "^12.1.0",
+    "exceljs": "^4.4.0",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/node": "^22.5.0",
+    "prisma": "^5.19.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.6.0"
+  }
+}

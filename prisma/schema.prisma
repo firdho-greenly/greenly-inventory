@@ -1,0 +1,29 @@
+// Greenly — Cek Selisih Stok SO (Stock Opname) bulanan.
+// Shares a Postgres instance with the "Greenly - Salary" project, but lives in
+// its own Postgres schema (namespace) via the `schema=so_check` param on
+// DATABASE_URL — keeps migration history fully isolated from that project's
+// `public` schema (which is managed with `prisma db push`, no migration table).
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+/// One row per (sku, lokasi, bulan): the SO selisih reported for that outlet/month.
+model SoData {
+  id        Int      @id @default(autoincrement())
+  sku       String
+  lokasi    String
+  bulan     String // format "YYYY-MM"
+  selisih   Decimal  @db.Decimal(14, 2) // rupiah value
+  selisihQty Decimal? @db.Decimal(14, 2) @map("selisih_qty") // unit qty value, display-only (flag threshold uses `selisih` rupiah)
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@unique([sku, lokasi, bulan])
+  @@index([bulan])
+  @@map("so_data")
+}

@@ -1,0 +1,12 @@
+# secrets
+.env
+
+# node
+node_modules/
+dist/
+
+# input/output excel files (local data, don't commit)
+input/
+output/
+*.xlsx
+!*.example.xlsx
