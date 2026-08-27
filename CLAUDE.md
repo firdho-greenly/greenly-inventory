@@ -60,10 +60,16 @@ lain) **diabaikan**, bukan di-flag.
 
 ## Database
 
-Postgres, **satu instance yang sama dengan project "Greenly - Salary"**, tapi
-skema terpisah (`?schema=so_check` di `DATABASE_URL`) — migration history
-tidak tercampur. Salary pakai `prisma db push` di skema `public` tanpa tabel
-migration; project ini pakai `prisma migrate` biasa.
+Postgres, **satu instance & database yang sama dengan project "Greenly -
+Salary"** (`greenly`), tapi skema terpisah (`?schema=inventory` di
+`DATABASE_URL`) — migration history tidak tercampur. Salary pakai
+`prisma db push` di skema `public` tanpa tabel migration; project ini pakai
+`prisma migrate` biasa.
+
+**Kalau Salary belum pernah di-deploy ke server yang sama:** database
+`greenly` belum ada — project ini yang membuatnya duluan. Waktu Salary
+di-deploy ke server itu nanti, arahkan ke database `greenly` yang sama
+(schema `public`), jangan bikin database baru terpisah.
 
 Tabel `so_data`: unique per `(sku, lokasi, bulan)`, upsert per run — aman
 dijalankan ulang untuk bulan yang sama tanpa duplikat.

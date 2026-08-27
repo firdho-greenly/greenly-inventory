@@ -1,5 +1,5 @@
 {
-  "name": "greenly-so-check",
+  "name": "greenly-inventory",
   "version": "0.1.0",
   "private": true,
   "description": "CLI: cek selisih stok SO (Stock Opname) bulanan — bandingkan bulan current vs bulan sebelumnya dan flag anomali plus-minus.",

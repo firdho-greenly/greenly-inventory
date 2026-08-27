@@ -1,8 +1,9 @@
-// Greenly — Cek Selisih Stok SO (Stock Opname) bulanan.
-// Shares a Postgres instance with the "Greenly - Salary" project, but lives in
-// its own Postgres schema (namespace) via the `schema=so_check` param on
-// DATABASE_URL — keeps migration history fully isolated from that project's
-// `public` schema (which is managed with `prisma db push`, no migration table).
+// Greenly Inventory — Cek Selisih Stok SO (Stock Opname) bulanan.
+// Shares a Postgres instance and database with the "Greenly - Salary" project,
+// but lives in its own Postgres schema (namespace) via the `schema=inventory`
+// param on DATABASE_URL — keeps migration history fully isolated from that
+// project's `public` schema (which is managed with `prisma db push`, no
+// migration table).
 
 generator client {
   provider = "prisma-client-js"
